@@ -1,9 +1,11 @@
 
-from config import DATA_PATH, DATA_FILE, NROWS
+from config import *
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.utils import shuffle
 import matplotlib as mpl
+
+from sklearn.model_selection import train_test_split
 
 def main():
 
@@ -14,7 +16,26 @@ def main():
 
     # Read in data
     print("> Reading DataFrame...")
-    df = pd.read_csv(DATA_PATH + "/" + DATA_FILE, nrows=None)
+    df = pd.read_csv(DATA_PATH + "/" + DATA_FILE, nrows=NROWS)
+
+    df = shuffle(df)
+
+    # Separate into train, test, and validation
+    train, test = train_test_split(df, test_size=TEST_SPLIT) # 80% train, 20% test 
+    train, val = train_test_split(train, test_size=VAL_SPLIT/TRAIN_SPLIT) # Needs to be 10% of entire data, but out of 80% of the data
+    # The final goal is 70% train, 20% test, 10% validation
+
+    # Get train, test, and validation data
+    x_train, y_train = train.iloc[:, SEP_COLUMN:], train["concept_type"]
+    x_test, y_test = test.iloc[:, SEP_COLUMN:], test["concept_type"]
+    x_val, y_val = val.iloc[:, SEP_COLUMN:], val["concept_type"]
+
+    print("Splits:")
+    print(f" - train: {len(train)/len(df)}%")
+    print(f" - test: {len(test)/len(df)}%")
+    print(f" - val: {len(val)/len(df)}%")
+
+    return
 
     print("> Shuffling...")
     df = shuffle(df)
