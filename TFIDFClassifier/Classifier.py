@@ -15,3 +15,6 @@ class Classifier(tf.keras.Model):
         x = self.dense3(x)
         x = self.softmax(x)
         return x
+
+
+        
