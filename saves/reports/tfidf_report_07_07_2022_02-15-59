@@ -1,0 +1,39 @@
+Configuration:
+# Data parameters
+DATA_PATH = "D:\\Documents\\Research\\DSPATH\\data"
+DATA_FILE = "scraped_preprocessed_fulltext_2.csv"
+NROWS = 1000
+FEATURES = 300
+SEP_COLUMN = 7
+TARGET_COLUMN = "concept_type"
+CLASSES = 2
+
+# Model parameters
+TFIDF_MODEL_NAME = "TFIDFModel"
+
+# must add up to 1
+TRAIN_SPLIT = 0.7
+TEST_SPLIT = 0.2
+VAL_SPLIT = 0.1
+
+# hyperparameters
+EPOCHS = 20
+BATCH_SIZE = 128
+================
+nsamples: 1.00 (1000)
+train: 0.685 (685)
+test: 0.2 (200)
+val: 0.115 (115)
+drug_size: 0.922 (922)
+disease_size: 0.078 (78)
+Classification Report:
+              precision    recall  f1-score   support
+
+     disease     1.0000    0.8462    0.9167        13
+        drug     0.9894    1.0000    0.9947       187
+
+    accuracy                         0.9900       200
+   macro avg     0.9947    0.9231    0.9557       200
+weighted avg     0.9901    0.9900    0.9896       200
+
+Time taken: 6.381094217300415s
