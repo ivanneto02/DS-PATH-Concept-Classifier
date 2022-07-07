@@ -11,14 +11,34 @@ def main():
 
     plt.style.use('seaborn')
 
-    # pd.options.display.max_rows = 100
-    # pd.options.display.max_columns = 10
+    pd.options.display.max_rows = 100
+    # pd.options.display.max_columns = 20
 
     # Read in data
     print("> Reading DataFrame...")
     df = pd.read_csv(DATA_PATH + "/" + DATA_FILE, nrows=NROWS)
 
-    df = shuffle(df)
+    print(pd.get_dummies(df["concept_type"]).astype('float32').columns)
+
+    return
+
+    # print(len(df))
+
+    # df["concept_type"].value_counts().plot(kind="pie", autopct='%1.1f%%', fontsize=17, label="")
+    # plt.title("Distribution of drug vs. disease concepts")
+    # plt.show()
+
+    # df["concept_type"].value_counts().plot(kind="bar", fontsize=17, rot=0)
+    # plt.title("Distribution of drug vs. disease concepts")
+    # plt.show()
+
+    mini = min(len(df[df["concept_type"] == "disease"].iloc[:, SEP_COLUMN:SEP_COLUMN+10]), len(df[df["concept_type"] == "drug"].iloc[:, SEP_COLUMN:SEP_COLUMN+10]))
+    features = 30
+
+    print(df[df["concept_type"] == "disease"].iloc[:, SEP_COLUMN:SEP_COLUMN+features].head(mini).sum(axis=0))
+    print(df[df["concept_type"] == "drug"].iloc[:, SEP_COLUMN:SEP_COLUMN+features].head(mini).sum(axis=0))
+
+    return
 
     # Separate into train, test, and validation
     train, test = train_test_split(df, test_size=TEST_SPLIT) # 80% train, 20% test 
