@@ -1,5 +1,4 @@
 import tensorflow as tf
-from tensorflow import keras
 
 class Classifier(tf.keras.Model):
     def __init__(self, num_classes=10):
@@ -17,4 +16,3 @@ class Classifier(tf.keras.Model):
         return x
 
 
-        
