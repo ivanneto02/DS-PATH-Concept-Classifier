@@ -18,6 +18,8 @@ def main():
     print("> Reading DataFrame...")
     df = pd.read_csv(DATA_PATH + "/" + DATA_FILE, nrows=NROWS)
 
+    print(df.iloc[:, SEP_COLUMN:].head(10))
+
     print(pd.get_dummies(df["concept_type"]).astype('float32').columns)
 
     return

@@ -1,7 +1,7 @@
 # Data parameters
-DATA_PATH = "D:\\Documents\\Research\\DSPATH\\data"
+DATA_PATH = "C:\\Users\\ivana\\Desktop\\Documents\\Research\\UCR\\DS-PATH\\working_dir\\data"
 DATA_FILE = "scraped_preprocessed_fulltext_2.csv"
-NROWS = None
+NROWS = 100
 FEATURES = 300
 SEP_COLUMN = 7
 TARGET_COLUMN = "concept_type"

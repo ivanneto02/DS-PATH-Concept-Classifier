@@ -1,0 +1,38 @@
+Configuration:
+# Data parameters
+DATA_PATH = "C:\\Users\\ivana\\Desktop\\Documents\\Research\\UCR\\DS-PATH\\working_dir\\data"
+DATA_FILE = "scraped_preprocessed_fulltext_2.csv"
+NROWS = None
+FEATURES = 2000
+SEP_COLUMN = 7
+TARGET_COLUMN = "concept_type"
+CLASSES = 2
+
+# Model parameters
+TFIDF_MODEL_NAME = "TFIDFModel"
+
+# must add up to 1
+TRAIN_SPLIT = 0.7
+TEST_SPLIT = 0.2
+VAL_SPLIT = 0.1
+
+# hyperparameters
+EPOCHS = 5
+BATCH_SIZE = 128
+
+================
+nsamples: 100% (33101)
+train: 0.6856892541010846% (22697)
+test: 0.20002416845412524% (6621)
+val: 0.11428657744479019% (3783)
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       1.00      0.98      0.99       573
+           1       1.00      1.00      1.00      6048
+
+    accuracy                           1.00      6621
+   macro avg       1.00      0.99      1.00      6621
+weighted avg       1.00      1.00      1.00      6621
+
+Time taken: 100.56019902229309s
